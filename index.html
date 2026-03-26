@@ -6,18 +6,14 @@
   <title>Le Chiavi d'Italia</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       background: black;
       color: #d4af37;
       font-family: Arial, sans-serif;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
+      overflow: hidden;
     }
 
     canvas {
@@ -31,179 +27,79 @@
       z-index: 2;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 24px 16px 60px;
+      justify-content: center;
+      padding: 20px;
       text-align: center;
     }
 
-    .top-title {
-      margin-top: 10px;
-      font-size: 18px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #f0d36b;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
-    }
-
-    .leaderboard {
-      width: min(92vw, 520px);
-      margin-top: 24px;
-      background: rgba(0, 0, 0, 0.72);
-      border: 2px solid rgba(212, 175, 55, 0.55);
-      border-radius: 16px;
-      padding: 18px 18px 14px;
-      box-shadow: 0 0 22px rgba(212, 175, 55, 0.14);
-      backdrop-filter: blur(2px);
-    }
-
-    .leaderboard h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
-      color: #f3cf62;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .leaderboard-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      text-align: left;
-    }
-
-    .leaderboard-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-      font-size: 15px;
-      color: #f3e4a1;
-    }
-
-    .leaderboard-list li:last-child {
-      border-bottom: none;
-    }
-
-    .position-btn {
-      margin-top: 14px;
-      padding: 11px 24px;
-      background: linear-gradient(180deg, #e0bd55, #b88a1b);
-      color: #1b1200;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .position-btn:hover {
-      filter: brightness(1.08);
-    }
-
-    .hero {
+    .hero-box {
       width: min(92vw, 760px);
-      margin-top: 34px;
-      background: rgba(0, 0, 0, 0.58);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      border-radius: 20px;
-      padding: 30px 20px 24px;
-      box-shadow: 0 0 24px rgba(212, 175, 55, 0.10);
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid rgba(212, 175, 55, 0.35);
+      border-radius: 24px;
+      padding: 40px 24px 36px;
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.12);
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(34px, 7vw, 56px);
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 7vw, 64px);
       letter-spacing: 3px;
-      color: #f5d775;
-      text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+      color: #f4d676;
       text-transform: uppercase;
+      text-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
     }
 
-    .hero-sub {
-      margin: 12px 0 0;
-      font-size: 18px;
-      color: #d9d0b2;
+    .subtitle {
+      margin: 0 0 26px;
+      font-size: clamp(18px, 3vw, 28px);
+      color: #f3e5a5;
+    }
+
+    .quote {
+      margin: 0 auto 30px;
+      width: min(92%, 620px);
+      font-size: clamp(18px, 2.6vw, 28px);
+      line-height: 1.8;
+      color: #f4e2a1;
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.16);
     }
 
     .enter-btn {
-      margin-top: 24px;
-      padding: 14px 34px;
-      background: linear-gradient(180deg, #f0c94f, #c69318);
-      color: #1a1200;
+      padding: 18px 44px;
+      min-width: 220px;
       border: none;
-      border-radius: 12px;
-      font-size: 20px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f3d36a, #b8860b);
+      color: #1e1400;
+      font-size: 24px;
       font-weight: bold;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+      transition: 0.2s ease;
     }
 
     .enter-btn:hover {
-      filter: brightness(1.08);
-      transform: translateY(-1px);
-    }
-
-    .egypt-text {
-      margin: 20px auto 0;
-      width: min(92%, 620px);
-      color: #f1de9a;
-      font-size: 18px;
-      line-height: 1.7;
-      text-align: center;
-      font-style: italic;
-      text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
-    }
-
-    .actions {
-      width: min(92vw, 760px);
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .action-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 64px;
-      padding: 14px;
-      background: rgba(17, 12, 3, 0.82);
-      color: #f2d36b;
-      text-decoration: none;
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-radius: 14px;
-      font-size: 17px;
-      font-weight: bold;
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.08);
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .action-btn:hover {
-      background: rgba(33, 23, 5, 0.92);
-      transform: translateY(-2px);
-    }
-
-    .footer-note {
-      margin-top: 28px;
-      color: #b7a66a;
-      font-size: 13px;
-      opacity: 0.9;
+      transform: scale(1.04);
+      box-shadow: 0 0 32px rgba(212, 175, 55, 0.55);
     }
 
     @media (max-width: 700px) {
-      .actions {
-        grid-template-columns: 1fr;
+      .hero-box {
+        padding: 28px 18px 28px;
       }
 
-      .leaderboard-list li {
-        font-size: 14px;
+      .quote {
+        line-height: 1.6;
       }
 
-      .egypt-text {
-        font-size: 16px;
+      .enter-btn {
+        min-width: 190px;
+        font-size: 22px;
+        padding: 16px 34px;
       }
     }
   </style>
@@ -212,51 +108,18 @@
   <canvas id="matrix"></canvas>
 
   <div class="overlay">
-    <div class="top-title">Le Chiavi d'Italia</div>
+    <div class="hero-box">
+      <h1>LE CHIAVI D'ITALIA</h1>
+      <div class="subtitle">La caccia al tesoro ha inizio</div>
 
-    <section class="leaderboard">
-      <h2>Classifica dei Primi 10</h2>
-      <ol class="leaderboard-list">
-        <li><span>1. Viaggiatore d'Oro</span><span>12 pt</span></li>
-        <li><span>2. Custode del Sigillo</span><span>11 pt</span></li>
-        <li><span>3. Occhio del Cobra</span><span>10 pt</span></li>
-        <li><span>4. Cercatore di Torino</span><span>9 pt</span></li>
-        <li><span>5. Figlio del Deserto</span><span>8 pt</span></li>
-        <li><span>6. Lettore delle Chiavi</span><span>7 pt</span></li>
-        <li><span>7. Portatore d'Enigma</span><span>6 pt</span></li>
-        <li><span>8. Guardiano delle Tracce</span><span>5 pt</span></li>
-        <li><span>9. Viandante della Mappa</span><span>4 pt</span></li>
-        <li><span>10. Ultimo Iniziato</span><span>3 pt</span></li>
-      </ol>
-
-      <button class="position-btn" onclick="window.location.href='classifica.html'">
-        Continua
-      </button>
-    </section>
-
-    <section class="hero">
-      <h1>Le Chiavi d'Italia</h1>
-      <p class="hero-sub">La caccia al tesoro ha inizio.</p>
-
-      <button class="enter-btn" onclick="window.location.href='accesso.html'">ENTRA</button>
-
-      <div class="egypt-text">
+      <div class="quote">
         “Non tutti arrivano fin qui.<br>
-        Tu sì.<br>
-        Questo significa che possiedi qualcosa di raro.<br>
+        Tu sì.<br><br>
+        Questo significa che possiedi qualcosa di raro.<br><br>
         Ora vediamo fin dove puoi spingerti...”
       </div>
-    </section>
 
-    <section class="actions">
-      <a class="action-btn" href="guida.html">Come si gioca</a>
-      <a class="action-btn" href="accesso.html">Registrati / Accedi</a>
-      <a class="action-btn" href="shop.html">Compra i libri</a>
-      <a class="action-btn" href="note-legali.html">Note legali</a>
-    </section>
-
-    <div class="footer-note">
-      Il viaggio è iniziato. Solo i più attenti troveranno la chiave finale.
+      <button class="enter-btn" onclick="window.location.href='hub.html'">ENTRA</button>
     </div>
   </div>
 
@@ -267,22 +130,18 @@
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      resetDrops();
     }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
 
     const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const fontSize = 18;
-    let columns = Math.floor(window.innerWidth / fontSize);
-    let drops = Array(columns).fill(1);
+    let columns = 0;
+    let drops = [];
 
     function resetDrops() {
       columns = Math.floor(window.innerWidth / fontSize);
       drops = Array(columns).fill(1);
     }
-
-    window.addEventListener("resize", resetDrops);
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
@@ -298,11 +157,12 @@
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-
         drops[i]++;
       }
     }
 
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
     setInterval(draw, 38);
   </script>
 </body>

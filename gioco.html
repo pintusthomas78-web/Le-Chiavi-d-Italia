@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Accesso Segreto</title>
+
+<style>
+body {
+    background: black;
+    color: gold;
+    font-family: Arial;
+    text-align: center;
+    padding-top: 100px;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: gold;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Inserisci il codice</h1>
+
+<input type="text" id="codice" placeholder="Codice segreto">
+
+<br>
+
+<button onclick="controlla()">ENTRA</button>
+
+<script>
+function controlla() {
+    let codice = document.getElementById("codice").value;
+
+    if(codice === "1234") {
+        alert("Codice corretto! Livello 1 sbloccato");
+    } else {
+        alert("Codice sbagliato");
+    }
+}
+</script>
+
+</body>
+</html>

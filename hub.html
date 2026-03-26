@@ -1,111 +1,33 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hub - Le Chiavi d'Italia</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="page-hub">
-  <canvas id="matrix"></canvas>
+<section class="leaderboard-box">
+  <h2>CLASSIFICA</h2>
 
-  <main class="overlay hub-layout">
-    <div class="mini-title">LE CHIAVI D'ITALIA</div>
+  <div class="leaderboard-table-wrap">
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Livelli</th>
+          <th>Errori</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Luca</td><td>4</td><td>3</td><td data-time="2026-03-26T13:20:00">26/03/2026</td></tr>
+        <tr><td>2</td><td>Marco</td><td>3</td><td>2</td><td data-time="2026-03-26T13:11:00">26/03/2026</td></tr>
+        <tr><td>3</td><td>JJJJ</td><td>3</td><td>3</td><td data-time="2026-03-26T12:58:00">26/03/2026</td></tr>
+        <tr><td>4</td><td>XOXO</td><td>2</td><td>1</td><td data-time="2026-03-26T12:40:00">26/03/2026</td></tr>
+        <tr><td>5</td><td>-----</td><td>2</td><td>1</td><td data-time="2026-03-26T12:09:00">26/03/2026</td></tr>
+        <tr><td>6</td><td>-----</td><td>1</td><td>1</td><td data-time="2026-03-26T11:44:00">26/03/2026</td></tr>
+        <tr><td>7</td><td>-----</td><td>0</td><td>0</td><td data-time="2026-03-26T11:20:00">26/03/2026</td></tr>
+        <tr><td>8</td><td>-----</td><td>0</td><td>0</td><td data-time="2026-03-26T10:58:00">26/03/2026</td></tr>
+        <tr><td>9</td><td>-----</td><td>0</td><td>0</td><td data-time="2026-03-26T10:17:00">26/03/2026</td></tr>
+        <tr><td>10</td><td>-----</td><td>0</td><td>0</td><td data-time="2026-03-26T09:55:00">26/03/2026</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <section class="leaderboard-box">
-      <h2>CLASSIFICA</h2>
-
-      <div class="leaderboard-table-wrap">
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>Livelli</th>
-              <th>Errori</th>
-              <th>Ultimo accesso</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>Viaggiatore d'oro</td><td>12</td><td>1</td><td>26/03 13:20</td></tr>
-            <tr><td>2</td><td>Custode del Sigillo</td><td>11</td><td>2</td><td>26/03 13:11</td></tr>
-            <tr><td>3</td><td>Occhio del Cobra</td><td>10</td><td>2</td><td>26/03 12:58</td></tr>
-            <tr><td>4</td><td>Cercatore di Torino</td><td>9</td><td>3</td><td>26/03 12:40</td></tr>
-            <tr><td>5</td><td>Figlio del Deserto</td><td>8</td><td>4</td><td>26/03 12:09</td></tr>
-            <tr><td>6</td><td>Lettore delle Chiavi</td><td>7</td><td>4</td><td>26/03 11:44</td></tr>
-            <tr><td>7</td><td>Portatore d'Enigma</td><td>6</td><td>5</td><td>26/03 11:20</td></tr>
-            <tr><td>8</td><td>Guardiano delle Tracce</td><td>5</td><td>5</td><td>26/03 10:58</td></tr>
-            <tr><td>9</td><td>Viandante della Mappa</td><td>4</td><td>6</td><td>26/03 10:17</td></tr>
-            <tr><td>10</td><td>Ultimo Iniziato</td><td>3</td><td>7</td><td>26/03 09:55</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <button class="continue-btn egypt-btn" onclick="alert('Qui mostreremo la tua posizione reale')">
-        CONTINUA
-      </button>
-    </section>
-
-    <section class="symbol-menu">
-      <a class="symbol-card" href="guida.html">
-        <div class="symbol-icon">📜</div>
-        <div class="symbol-label">Guida</div>
-      </a>
-
-      <a class="symbol-card" href="accesso.html">
-        <div class="symbol-icon">👁</div>
-        <div class="symbol-label">Accesso</div>
-      </a>
-
-      <a class="symbol-card" href="shop.html">
-        <div class="symbol-icon">🗝</div>
-        <div class="symbol-label">Acquista</div>
-      </a>
-
-      <a class="symbol-card" href="note-legali.html">
-        <div class="symbol-icon">⚖</div>
-        <div class="symbol-label">Note legali</div>
-      </a>
-    </section>
-  </main>
-
-  <script>
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
-
-    const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 18;
-    let columns = 0;
-    let drops = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      columns = Math.floor(window.innerWidth / fontSize);
-      drops = Array(columns).fill(1);
-    }
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#d4af37";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    setInterval(draw, 38);
-  </script>
-</body>
-</html>
+  <button class="continue-btn egypt-btn" onclick="alert('Qui mostreremo la tua posizione reale')">
+    PROSEGUI
+  </button>
+</section>

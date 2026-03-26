@@ -1,32 +1,103 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hub - Le Chiavi d'Italia</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Chiavi d'Italia - Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="page-hub">
 
-<body>
+  <canvas id="matrix"></canvas>
 
-<canvas id="matrix"></canvas>
+  <main class="overlay hub-sketch-layout">
+    <h1 class="hub-title">Le Chiavi d'Italia</h1>
+    <div class="hub-subtitle">Classifica</div>
 
-<main class="overlay hub-layout">
+    <section class="hub-main-grid">
+      <div class="ranking-panel">
+        <div class="ranking-scroll">
+          <ol class="ranking-list">
+            <li><span class="pos">1</span><span class="name">Luca</span></li>
+            <li><span class="pos">2</span><span class="name">Marco</span></li>
+            <li><span class="pos">3</span><span class="name">JJJJ</span></li>
+            <li><span class="pos">4</span><span class="name">XOXO</span></li>
+            <li><span class="pos">5</span><span class="name">---</span></li>
+            <li><span class="pos">6</span><span class="name">---</span></li>
+            <li><span class="pos">7</span><span class="name">---</span></li>
+            <li><span class="pos">8</span><span class="name">---</span></li>
+            <li><span class="pos">9</span><span class="name">---</span></li>
+            <li><span class="pos">10</span><span class="name">---</span></li>
+          </ol>
+        </div>
 
-  <!-- CLASSIFICA -->
-  <section class="leaderboard-box">
-    <h2>CLASSIFICA</h2>
+        <button class="continue-btn egypt-btn" onclick="alert('Qui mostreremo la tua posizione reale')">
+          CONTINUA
+        </button>
+      </div>
 
-    <table class="leaderboard-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th>Livelli</th>
-          <th>Errori</th>
-          <th>Data</th>
-        </tr>
-      </thead>
+      <div class="side-buttons">
+        <a class="side-card" href="guida.html">
+          <div class="side-icon">📜</div>
+          <div class="side-label">Guida</div>
+        </a>
 
-      <tbody>
-        <tr><td>1</td><td>Luca</td><td>4</td><td>3</td><td data-time="2026-03-26T13:20">26/03/2026</td></tr>
+        <a class="side-card" href="accesso.html">
+          <div class="side-icon">👁</div>
+          <div class="side-label">Accesso</div>
+        </a>
+
+        <a class="side-card" href="shop.html">
+          <div class="side-icon">🗝</div>
+          <div class="side-label">Acquista</div>
+        </a>
+
+        <a class="side-card" href="note-legali.html">
+          <div class="side-icon">⚖</div>
+          <div class="side-label">Note legali</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 18;
+    let columns = 0;
+    let drops = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns = Math.floor(window.innerWidth / fontSize);
+      drops = Array(columns).fill(1);
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#d4af37";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    setInterval(draw, 38);
+  </script>
+
+</body>
+</html>

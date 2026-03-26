@@ -61,9 +61,8 @@
 <div class="container">
   <h1>LE CHIAVI D'ITALIA</h1>
   <p>La caccia al tesoro è iniziata...</p>
-  <button onclick="startGame()">ENTRA</button>
-</div>
-
+  <button 
+    onclick="entra()">ENTRA</button>
 <script>
   const canvas = document.getElementById("matrix");
   const ctx = canvas.getContext("2d");
@@ -108,3 +107,6 @@
 
 </body>
 </html>
+function entra() {
+    window.location.href = "gioco.html";
+}

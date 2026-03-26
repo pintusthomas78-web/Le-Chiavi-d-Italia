@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #d4af37;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+.page-intro .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.intro-box {
+  width: min(92vw, 760px);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.50);
+  border: 2px solid rgba(212, 175, 55, 0.35);
+  border-radius: 24px;
+  padding: 42px 24px 36px;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.12);
+}
+
+.site-title {
+  margin: 0 0 12px;
+  font-size: clamp(34px, 7vw, 62px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f4d676;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
+}
+
+.site-subtitle {
+  margin: 0 0 24px;
+  font-size: clamp(18px, 3vw, 28px);
+  color: #f3e5a5;
+}
+
+.egypt-quote {
+  width: min(92%, 620px);
+  margin: 0 auto 30px;
+  color: #f4e2a1;
+  font-size: clamp(18px, 2.6vw, 28px);
+  line-height: 1.8;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.16);
+}
+
+.egypt-btn {
+  padding: 16px 42px;
+  min-width: 220px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f3d36a, #b8860b);
+  color: #1e1400;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+  transition: 0.2s ease;
+}
+
+.egypt-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.55);
+}
+
+.enter-btn {
+  font-size: 26px;
+  min-width: 250px;
+  padding: 18px 46px;
+}
+
+.page-hub .overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 16px 40px;
+  text-align: center;
+}
+
+.mini-title {
+  margin-top: 8px;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #f2d36a;
+}
+
+.leaderboard-box {
+  width: min(94vw, 980px);
+  min-height: 25vh;
+  margin-top: 22px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  border-radius: 20px;
+  padding: 18px 14px 20px;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.14);
+}
+
+.leaderboard-box h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #f5d774;
+}
+
+.leaderboard-table-wrap {
+  overflow-x: auto;
+}
+
+.leaderboard-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.leaderboard-table thead th {
+  color: #f6de92;
+  font-size: 15px;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  text-transform: uppercase;
+}
+
+.leaderboard-table tbody td {
+  color: #f3e8ba;
+  font-size: 15px;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+.leaderboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.continue-btn {
+  margin-top: 18px;
+}
+
+.symbol-menu {
+  width: min(94vw, 980px);
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.symbol-card {
+  min-height: 120px;
+  background: rgba(15, 10, 2, 0.84);
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  border-radius: 16px;
+  color: #f1d36b;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.08);
+  transition: 0.2s ease;
+}
+
+.symbol-card:hover {
+  background: rgba(33, 22, 4, 0.94);
+  transform: translateY(-2px);
+}
+
+.symbol-icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.symbol-label {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .symbol-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .intro-box {
+    padding: 30px 18px;
+  }
+
+  .egypt-quote {
+    line-height: 1.6;
+  }
+
+  .leaderboard-box h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .symbol-menu {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .symbol-card {
+    min-height: 100px;
+  }
+
+  .symbol-icon {
+    font-size: 30px;
+  }
+
+  .symbol-label {
+    font-size: 14px;
+  }
+
+  .egypt-btn {
+    min-width: 190px;
+    font-size: 20px;
+  }
+}

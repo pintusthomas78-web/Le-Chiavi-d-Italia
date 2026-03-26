@@ -10,53 +10,114 @@
 
   <canvas id="matrix"></canvas>
 
-  <main class="overlay hub-sketch-layout">
-    <h1 class="hub-title">Le Chiavi d'Italia</h1>
-    <div class="hub-subtitle">Classifica</div>
+  <main class="overlay hub-egypt-layout">
+    <header class="hub-header">
+      <h1>Le Chiavi d'Italia</h1>
+      <p>Classifica degli esploratori</p>
+    </header>
 
-    <section class="hub-main-grid">
-      <div class="ranking-panel">
-        <div class="ranking-scroll">
-          <ol class="ranking-list">
-            <li><span class="pos">1</span><span class="name">Luca</span></li>
-            <li><span class="pos">2</span><span class="name">Marco</span></li>
-            <li><span class="pos">3</span><span class="name">JJJJ</span></li>
-            <li><span class="pos">4</span><span class="name">XOXO</span></li>
-            <li><span class="pos">5</span><span class="name">---</span></li>
-            <li><span class="pos">6</span><span class="name">---</span></li>
-            <li><span class="pos">7</span><span class="name">---</span></li>
-            <li><span class="pos">8</span><span class="name">---</span></li>
-            <li><span class="pos">9</span><span class="name">---</span></li>
-            <li><span class="pos">10</span><span class="name">---</span></li>
-          </ol>
+    <section class="hub-content">
+      <div class="papyrus-wrap">
+        <div class="papyrus-board">
+          <div class="papyrus-title">Classifica</div>
+
+          <div class="papyrus-columns papyrus-head">
+            <div># / Giocatore</div>
+            <div>Livelli</div>
+            <div>Errori</div>
+            <div>Data</div>
+          </div>
+
+          <div class="papyrus-list">
+            <div class="papyrus-row">
+              <div><span class="rank">1.</span> Luca</div>
+              <div>4</div>
+              <div>3</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">2.</span> Marco</div>
+              <div>3</div>
+              <div>2</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">3.</span> JJJJ</div>
+              <div>3</div>
+              <div>3</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">4.</span> XOXO</div>
+              <div>2</div>
+              <div>1</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">5.</span> ---</div>
+              <div>2</div>
+              <div>1</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">6.</span> ---</div>
+              <div>1</div>
+              <div>1</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">7.</span> ---</div>
+              <div>0</div>
+              <div>0</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">8.</span> ---</div>
+              <div>0</div>
+              <div>0</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">9.</span> ---</div>
+              <div>0</div>
+              <div>0</div>
+              <div>26/03/2026</div>
+            </div>
+            <div class="papyrus-row">
+              <div><span class="rank">10.</span> ---</div>
+              <div>0</div>
+              <div>0</div>
+              <div>26/03/2026</div>
+            </div>
+          </div>
         </div>
 
-        <button class="continue-btn egypt-btn" onclick="alert('Qui mostreremo la tua posizione reale')">
-          CONTINUA
+        <button class="egypt-btn proceed-btn" onclick="alert('Qui mostreremo la tua posizione reale')">
+          PROSEGUI
         </button>
       </div>
 
-      <div class="side-buttons">
-        <a class="side-card" href="guida.html">
-          <div class="side-icon">📜</div>
-          <div class="side-label">Guida</div>
+      <aside class="right-menu">
+        <a class="menu-tile" href="guida.html">
+          <div class="tile-icon">📜</div>
+          <div class="tile-label">Guida</div>
         </a>
 
-        <a class="side-card" href="accesso.html">
-          <div class="side-icon">👁</div>
-          <div class="side-label">Accesso</div>
+        <a class="menu-tile" href="accesso.html">
+          <div class="tile-icon">👁</div>
+          <div class="tile-label">Accesso</div>
         </a>
 
-        <a class="side-card" href="shop.html">
-          <div class="side-icon">🗝</div>
-          <div class="side-label">Acquista</div>
+        <a class="menu-tile" href="shop.html">
+          <div class="tile-icon">🗝</div>
+          <div class="tile-label">Acquista</div>
         </a>
 
-        <a class="side-card" href="note-legali.html">
-          <div class="side-icon">⚖</div>
-          <div class="side-label">Note legali</div>
+        <a class="menu-tile" href="note-legali.html">
+          <div class="tile-icon">⚖</div>
+          <div class="tile-label">Note legali</div>
         </a>
-      </div>
+      </aside>
     </section>
   </main>
 
@@ -90,6 +151,7 @@
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
+
         drops[i]++;
       }
     }

@@ -4,141 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Le Chiavi d'Italia</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: black;
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .overlay {
-      position: relative;
-      z-index: 2;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .hero-box {
-      width: min(92vw, 760px);
-      background: rgba(0, 0, 0, 0.55);
-      border: 2px solid rgba(212, 175, 55, 0.35);
-      border-radius: 24px;
-      padding: 40px 24px 36px;
-      box-shadow: 0 0 24px rgba(212, 175, 55, 0.12);
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(34px, 7vw, 64px);
-      letter-spacing: 3px;
-      color: #f4d676;
-      text-transform: uppercase;
-      text-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
-    }
-
-    .subtitle {
-      margin: 0 0 26px;
-      font-size: clamp(18px, 3vw, 28px);
-      color: #f3e5a5;
-    }
-
-    .quote {
-      margin: 0 auto 30px;
-      width: min(92%, 620px);
-      font-size: clamp(18px, 2.6vw, 28px);
-      line-height: 1.8;
-      color: #f4e2a1;
-      font-style: italic;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.16);
-    }
-
-    .enter-btn {
-      padding: 18px 44px;
-      min-width: 220px;
-      border: none;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #f3d36a, #b8860b);
-      color: #1e1400;
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      cursor: pointer;
-      box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
-      transition: 0.2s ease;
-    }
-
-    .enter-btn:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 32px rgba(212, 175, 55, 0.55);
-    }
-
-    @media (max-width: 700px) {
-      .hero-box {
-        padding: 28px 18px 28px;
-      }
-
-      .quote {
-        line-height: 1.6;
-      }
-
-      .enter-btn {
-        min-width: 190px;
-        font-size: 22px;
-        padding: 16px 34px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="page-intro">
   <canvas id="matrix"></canvas>
 
-  <div class="overlay">
-    <div class="hero-box">
-      <h1>LE CHIAVI D'ITALIA</h1>
-      <div class="subtitle">La caccia al tesoro ha inizio</div>
+  <main class="overlay intro-layout">
+    <section class="intro-box">
+      <h1 class="site-title">LE CHIAVI D'ITALIA</h1>
+      <p class="site-subtitle">La caccia al tesoro ha inizio</p>
 
-      <div class="quote">
+      <div class="egypt-quote">
         “Non tutti arrivano fin qui.<br>
         Tu sì.<br><br>
         Questo significa che possiedi qualcosa di raro.<br><br>
         Ora vediamo fin dove puoi spingerti...”
       </div>
 
-      <button class="enter-btn" onclick="window.location.href='hub.html'">ENTRA</button>
-    </div>
-  </div>
+      <button class="enter-btn egypt-btn" onclick="window.location.href='hub.html'">
+        ENTRA
+      </button>
+    </section>
+  </main>
 
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      resetDrops();
-    }
 
     const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const fontSize = 18;
     let columns = 0;
     let drops = [];
 
-    function resetDrops() {
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       columns = Math.floor(window.innerWidth / fontSize);
       drops = Array(columns).fill(1);
     }

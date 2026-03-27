@@ -173,3 +173,10 @@ body {
   background: url("sfondo.png") no-repeat center center fixed;
   background-size: cover;
 }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75); /* penombra */
+  z-index: 0;
+}

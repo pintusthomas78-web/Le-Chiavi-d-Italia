@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accesso - Le Chiavi d'Italia</title>
+  <title>Access - Le Chiavi d'Italia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-simple">
@@ -11,34 +11,82 @@
 
   <main class="overlay simple-page">
     <div class="simple-box">
-      <h1>Accesso</h1>
+      <h1>Access</h1>
 
-      <form class="access-form" onsubmit="entra(event)">
-        <input type="text" id="nome" placeholder="Nome utente" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
+      <div class="form-section">
+        <h2>Login</h2>
+        <form class="access-form" onsubmit="loginUser(event)">
+          <input type="text" id="nickname" placeholder="Nickname" required>
+          <input type="text" id="accessCode" placeholder="Access Code" required>
+          <button type="submit" class="egypt-btn">LOGIN</button>
+        </form>
+      </div>
 
-        <button type="submit" class="egypt-btn">ENTRA</button>
-      </form>
+      <div class="form-section">
+        <h2>Register</h2>
+        <form class="access-form" onsubmit="registerUser(event)">
+          <input type="text" id="firstName" placeholder="First Name" required>
+          <input type="text" id="lastName" placeholder="Last Name" required>
+          <input type="date" id="birthDate" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <input type="password" id="password" placeholder="Create Password" required>
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+          <button type="submit" class="egypt-btn">REGISTER</button>
+        </form>
+      </div>
 
-      <button class="egypt-btn secondary-btn" onclick="window.location.href='hub.html'">TORNA INDIETRO</button>
+      <button class="egypt-btn secondary-btn" onclick="window.location.href='hub.html'">
+        BACK
+      </button>
     </div>
   </main>
 
   <script>
-    function entra(event) {
+    function loginUser(event) {
       event.preventDefault();
-      const nome = document.getElementById("nome").value;
-      localStorage.setItem("utenteNome", nome);
-      alert("Accesso eseguito con successo");
+      const nickname = document.getElementById("nickname").value;
+      const accessCode = document.getElementById("accessCode").value;
+
+      if (!nickname || !accessCode) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      localStorage.setItem("utenteNickname", nickname);
+      alert("Login successful");
       window.location.href = "gioco.html";
+    }
+
+    function registerUser(event) {
+      event.preventDefault();
+
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const birthDate = document.getElementById("birthDate").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (!firstName || !lastName || !birthDate || !email || !password || !confirmPassword) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      alert("Registration completed successfully");
     }
 
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
+
     const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const fontSize = 18;
-    let columns = 0, drops = [];
+    let columns = 0;
+    let drops = [];
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -48,15 +96,20 @@
     }
 
     function draw() {
-      ctx.fillStyle = "rgba(0,0,0,0.08)";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       ctx.fillStyle = "#d4af37";
       ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
         const text = letters.charAt(Math.floor(Math.random() * letters.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
         drops[i]++;
       }
     }

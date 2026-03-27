@@ -31,8 +31,8 @@
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
-    const letters = "𓂀𓆣𓅓𓋹𓃭𓂋0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 18;
+    const letters = "𓂀𓆣𓅓𓋹𓃭𓂋01234EFGOPQRSUVWXYZ";
+    const fontSize = 14;
     let columns = 0;
     let drops = [];
 
@@ -44,7 +44,7 @@
     }
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.30)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#d4af37";

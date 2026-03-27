@@ -7,96 +7,32 @@
 
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* CONTENUTO CENTRALE */
-.overlay {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.box {
-  max-width: 600px;
-  width: 85%;
-  padding: 30px;
-  background: rgba(0,0,0,0.55);
-  border: 2px solid #d4af37;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(212,175,55,0.4);
-}
-
-/* TESTI */
-.site-title {
-  font-size: 28px;
-  letter-spacing: 3px;
-  color: #f4d676;
-  margin-bottom: 20px;
-}
-
-.site-subtitle {
-  font-size: 16px;
-  color: #f3e5a5;
-  margin-bottom: 15px;
-}
-
-.quote {
-  font-style: italic;
-  margin: 15px 0;
-}
-
-/* PULSANTI */
-.main-btn {
-  display: block;
-  margin: 12px auto;
-  padding: 12px;
-  width: 80%;
-  background: transparent;
-  border: 2px solid #d4af37;
-  color: #d4af37;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.main-btn:hover {
-  background: #d4af37;
-  color: black;
-}
-</style>
 </head>
 
-<body>
+<body class="page-simple">
 
 <!-- MATRIX -->
 <canvas id="matrix"></canvas>
 
 <!-- CONTENUTO -->
-<div class="overlay">
-  <div class="box">
+<main class="overlay">
+
+  <div class="intro-box">
 
     <h1 class="site-title">LE CHIAVI D'ITALIA</h1>
 
     <div class="site-subtitle">La caccia al tesoro ha inizio</div>
 
-    <div class="quote">"Non tutti arrivano fin qui."</div>
-    <div class="quote">Tu sì.</div>
+    <p class="egypt-quote">"Non tutti arrivano fin qui."</p>
+    <p class="egypt-quote">Tu sì.</p>
+    <p class="egypt-quote">Questo significa che possiedi qualcosa di raro.</p>
+    <p class="egypt-quote">Ora vediamo fin dove puoi spingerti...</p>
 
-    <div class="quote">Questo significa che possiedi qualcosa di raro.</div>
-
-    <div class="quote">Ora vediamo fin dove puoi spingerti...</div>
-
-    <button class="main-btn" onclick="location.href='guida.html'">GUIDE</button>
-    <button class="main-btn" onclick="location.href='accesso.html'">LOGIN / REGISTER</button>
-    <button class="main-btn" onclick="location.href='shop.html'">BUY ACCESS</button>
-    <button class="main-btn" onclick="location.href='note-legali.html'">LEGAL NOTES</button>
-    <button class="main-btn" onclick="location.href='classifica.html'">PROCEED</button>
+    <button class="enter-btn">ENTRA</button>
 
   </div>
-</div>
+
+</main>
 
 <!-- MATRIX SCRIPT -->
 <script>
@@ -106,8 +42,10 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "const letters = "𓀀𓀁𓀂𓀃𓀄𓀅𓀆𓀇𓀈𓀉𓀊𓀋𓀌𓀍𓀎𓀏𓀐𓀑𓀒𓀓𓀔𓀕𓀖𓀗𓀘𓀙𓀚𓀛𓀜𓀢𓀣𓀤𓀥𓀦𓀧𓀨𓀩𓀪𓀫𓀬𓀭𓀮𓀯𓀸𓀹𓀺𓀻𓀼𓀽𓀾𓀿𓁀𓁁𓁂𓁃𓁄𓁅𓁆𓁇𓁈𓁉𓁊𓁋𓁌𓁍𓁎𓁏𓁐𓁑𓁒𓁓𓁔𓁕𓁖𓁗𓁘𓁙𓁚𓁛𓁜𓁝𓁞𓁟𓁠𓁡𓁢𓁣𓁤𓁥𓁦𓁧𓁨𓁩𓁪𓁫𓁬𓁭𓁮𓁯𓁰𓁱𓁲𓁳𓁴𓁵𓁶𓁷𓁸𓁹𓁺𓁻𓁼𓁽𓁾𓁿𓂀𓂁𓂂𓂃𓂄𓂅𓂆𓂇𓂈𓂉𓂊𓂋𓂌𓂍𓂎𓂏𓂐𓂑𓂒𓂓𓂔𓂕𓂖𓂗𓂘𓂙𓂚𓂛𓂜𓂝𓂞𓂟𓂠𓂡𓂢𓂣𓂤𓂥𓂦𓂧𓂨𓂩𓂪𓂫𓂬𓂭𓂮𓂯𓂰𓂱𓂲𓂳𓂴𓂵𓂶𓂷𓂸𓂹𓂺𓂻𓂼𓂽𓂾𓂿𓃀𓃅𓃆𓃇𓃈𓃒𓃓𓃔𓃕𓃖𓃗𓃘𓃙𓃚𓃛𓃜𓃝𓃞𓃟𓃠𓃡𓃢𓃣𓃤𓃥𓃦𓃧𓃨𓃩𓃪𓃫𓃬𓃭𓃮𓃯𓃰𓃱𓃲𓃳𓃴𓃵𓃶𓃷𓃸𓃹𓃺𓃻𓃼𓃽𓃾𓃿";0123456789アイウエオאבגדהوزطشقف";
-const fontSize = 10;
+// SOLO QUI abbiamo cambiato i simboli
+const letters = "𓂀𓆣𓅓𓋹𓃭𓂋𓁹𓆑𓊃𓏏𓈖𓍿01234567𓀀𓀁𓀂𓀃𓀄𓀅𓀆𓀇𓀈𓀉𓀊𓀋𓀌𓀍𓀎𓀏𓀐𓀑𓀒𓀓𓀔𓀕𓀖𓀗𓀘𓀙𓀚𓀛𓀜𓀝𓀞𓀟𓀠𓀡𓀢𓀣𓀤𓀥𓀦𓀧𓀨𓀩𓀪𓀫𓀬𓀭𓀮𓀯𓀰𓀱𓀲𓀳𓀴𓀵89";
+
+const fontSize = 12;
 const columns = Math.floor(canvas.width / fontSize);
 
 const drops = [];
@@ -116,20 +54,16 @@ for (let i = 0; i < columns; i++) {
 }
 
 function draw() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "#ffd700";
-  ctx.shadowColor = "#ffd700";
-  ctx.shadowBlur = 8;
-
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
 
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize - 2);
 
     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
@@ -139,7 +73,7 @@ function draw() {
   }
 }
 
-setInterval(draw, 33);
+setInterval(draw, 35);
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;

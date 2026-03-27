@@ -44,22 +44,11 @@ canvas.height = window.innerHeight;
 
 // SOLO QUI abbiamo cambiato i simboli
 const letters = "𓂀𓆣𓅓𓋹𓃭𓂋𓁹𓆑𓊃𓏏𓈖𓍿01234567𓀀𓀁𓀂𓀃𓀄𓀅𓀆𓀇𓀈𓀉𓀊𓀋𓀌𓀍𓀎𓀏𓀐𓀑𓀒𓀓𓀔𓀕𓀖𓀗𓀘𓀙𓀚𓀛𓀜𓀝𓀞𓀟𓀠𓀡𓀢𓀣𓀤𓀥𓀦𓀧𓀨𓀩𓀪𓀫𓀬𓀭𓀮𓀯𓀰𓀱𓀲𓀳𓀴𓀵89";
-
-const fontSize = 12;
-const columns = Math.floor(canvas.width / fontSize);
-
-const drops = [];
-for (let i = 0; i < columns; i++) {
-  drops[i] = Math.random() * canvas.height;
-}
-
 function draw() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#ffea00";
-  ctx.shadowColor = "#ffd700";
-  ctx.shadowBlur = 12;
+  ctx.fillStyle = "#ffd700";
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
@@ -74,6 +63,15 @@ function draw() {
     drops[i]++;
   }
   }
+const fontSize = 12;
+const columns = Math.floor(canvas.width / fontSize);
+
+const drops = [];
+for (let i = 0; i < columns; i++) {
+  drops[i] = Math.random() * canvas.height;
+}
+
+
 
 setInterval(draw, 35);
 

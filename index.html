@@ -58,6 +58,7 @@ function draw() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "#ffea00";
+  ctx.shadowBlur = 10;
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {

@@ -32,34 +32,29 @@
     const ctx = canvas.getContext("2d");
 
     const letters = "𓂀𓆣𓅓𓋹𓃭𓂋01234EFGOPQRSUVWXYZ";
-    const fontSize = 14;
-    let columns = 0;
-    let drops = [];
+    const fontSize = 10;
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      columns = Math.floor(window.innerWidth / fontSize);
-      drops = Array(columns).fill(1);
+function draw() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ffea00";
+  ctx.shadowColor = "#ffd700";
+  ctx.shadowBlur = 8;
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize - 2);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
     }
 
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.30)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#d4af37";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
+    drops[i]++;
+  }
+}
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);

@@ -43,39 +43,26 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// simboli egizi + lettere
 const letters = "𓂀𓆣𓅓𓋹𓃭𓂋𓁹𓆑𓊃𓏏𓈖𓍿ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
 const fontSize = 12;
-const columns = Math.floor(canvas.width / fontSize);
+let columns = Math.floor(canvas.width / fontSize);
 
-const drops = [];
+let drops = [];
 for (let i = 0; i < columns; i++) {
-  drops[i] = Math.random() * canvas.height;
+  drops[i] = Math.random() * canvas.height / fontSize;
 }
 
 function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // 🔥 SCIA LEGGERA (NON COPRE)
-  ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // 🔥 COLORE ORO EQUILIBRATO
-  ctx.fillStyle = "rgba(255, 215, 0, 0.65)";
-
-  // 🔥 BAGLIORE LEGGERO (EFFETTO PREMIUM)
-  ctx.shadowColor = "#ffd700";
-  ctx.shadowBlur = 4;
-
+  ctx.fillStyle = "rgba(255, 215, 0, 0.28)";
+  ctx.shadowColor = "rgba(255, 215, 0, 0.35)";
+  ctx.shadowBlur = 3;
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
-
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
-
-    // doppia scrittura leggera = più visibilità
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize - 2);
 
     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
@@ -85,13 +72,16 @@ function draw() {
   }
 }
 
-// velocità equilibrata
-setInterval(draw, 35);
+setInterval(draw, 50);
 
-// resize
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  columns = Math.floor(canvas.width / fontSize);
+  drops = [];
+  for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * canvas.height / fontSize;
+  }
 });
 </script>
 

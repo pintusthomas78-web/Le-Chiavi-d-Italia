@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
   color: #d4af37;
   min-height: 100vh;
-  overflow: hidden; /* 👈 QUESTA È LA CHIAVE */
+  overflow: hidden;
 }
   background: url("file_00000000813471f485af95f5decb4fe4.png") no-repeat center center fixed;
   background-size: cover;

@@ -9,6 +9,27 @@
 </head>
 
 <body class="page-simple">
+<div id="intro-curtain">
+  <canvas id="matrix-intro"></canvas>
+</div>
+
+<canvas id="matrix"></canvas>
+
+<main class="overlay">
+  <div class="intro-box">
+    <h1 class="site-title">LE CHIAVI D'ITALIA</h1>
+    <div class="site-subtitle">La caccia al tesoro ha inizio</div>
+
+    <p class="egypt-quote">"Non tutti arrivano fin qui."</p>
+    <p class="egypt-quote">Tu sì.</p>
+    <p class="egypt-quote">Questo significa che possiedi qualcosa di raro.</p>
+    <p class="egypt-quote">Ora vediamo fin dove puoi spingerti...</p>
+
+    <button class="enter-btn" onclick="window.location.href='hub.html'">
+      ENTRA
+    </button>
+  </div>
+</main>  
 
 <!-- MATRIX -->
 <canvas id="matrix"></canvas>
@@ -84,6 +105,71 @@ window.addEventListener("resize", () => {
   }
 });
 </script>
+<script>
+/* MATRIX INTRO */
+const introCanvas = document.getElementById("matrix-intro");
+const introCtx = introCanvas.getContext("2d");
 
+function resizeIntroCanvas() {
+  introCanvas.width = window.innerWidth;
+  introCanvas.height = window.innerHeight;
+}
+resizeIntroCanvas();
+
+const introLetters = "𓂀𓆣𓅓𓋹𓃭𓂋𓁹𓆑𓊃𓏏𓈖𓍿ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const introFontSize = 14;
+let introColumns = Math.floor(window.innerWidth / introFontSize);
+let introDrops = [];
+
+function resetIntroDrops() {
+  introColumns = Math.floor(window.innerWidth / introFontSize);
+  introDrops = [];
+  for (let i = 0; i < introColumns; i++) {
+    introDrops[i] = Math.random() * window.innerHeight / introFontSize;
+  }
+}
+resetIntroDrops();
+
+function drawIntroMatrix() {
+  introCtx.fillStyle = "rgba(0, 0, 0, 0.12)";
+  introCtx.fillRect(0, 0, introCanvas.width, introCanvas.height);
+
+  introCtx.fillStyle = "rgba(255, 215, 0, 0.75)";
+  introCtx.shadowColor = "rgba(255, 215, 0, 0.45)";
+  introCtx.shadowBlur = 6;
+  introCtx.font = introFontSize + "px monospace";
+
+  for (let i = 0; i < introDrops.length; i++) {
+    const text = introLetters.charAt(Math.floor(Math.random() * introLetters.length));
+    introCtx.fillText(text, i * introFontSize, introDrops[i] * introFontSize);
+
+    if (introDrops[i] * introFontSize > introCanvas.height && Math.random() > 0.975) {
+      introDrops[i] = 0;
+    }
+
+    introDrops[i]++;
+  }
+}
+
+const introMatrixInterval = setInterval(drawIntroMatrix, 45);
+
+/* APERTURA TENDA */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("intro-curtain").classList.add("opening");
+  }, 3000); // tempo schermata iniziale
+
+  setTimeout(() => {
+    clearInterval(introMatrixInterval);
+    const curtain = document.getElementById("intro-curtain");
+    if (curtain) curtain.remove();
+  }, 5000); // rimozione finale
+});
+
+window.addEventListener("resize", () => {
+  resizeIntroCanvas();
+  resetIntroDrops();
+});
+</script>
 </body>
 </html>

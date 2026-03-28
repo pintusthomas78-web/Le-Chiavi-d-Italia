@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
 * {
   box-sizing: border-box;
 }
@@ -7,7 +12,8 @@ body {
   font-family: Arial, sans-serif;
   color: #d4af37;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden; /* 👈 QUESTA È LA CHIAVE */
+}
   background: url("file_00000000813471f485af95f5decb4fe4.png") no-repeat center center fixed;
   background-size: cover;
 

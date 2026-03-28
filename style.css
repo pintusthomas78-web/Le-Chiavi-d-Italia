@@ -511,3 +511,34 @@ html {
   margin: 0 auto;
   padding: 20px;
 }
+#intro-curtain {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#intro-curtain.opening {
+  animation: curtainOpen 1.8s ease-in-out forwards;
+}
+
+#matrix-intro {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@keyframes curtainOpen {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  }

@@ -10,9 +10,9 @@ body {
   min-height: 100vh;
   overflow: hidden;
 }
-  background: url("file_00000000813471f485af95f5decb4fe4.png") no-repeat center center fixed;
+  {background: url("file_00000000813471f485af95f5decb4fe4.png") no-repeat center center fixed;
   background-size: cover;
-
+}
 
 body::before {
   content: "";
